@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
-from scipy.stats import ttest_1samp
+from statsmodels.stats.weightstats import ztest as ztest
 
 
 chat_id = 1304567965
 
-def solution(sample: np.ndarray) -> bool:
-    res = ttest_1samp(sample, 300, alternative='less')
+def solution(x):
+    res = ztest(x1=x, value=300, alternative='smaller')
     return res[1] < 0.06
